@@ -14,7 +14,11 @@ public class ModEffects {
             = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MythsMod.MOD_ID);
 
     public static final RegistryObject<MobEffect> GODS_FOOD_I = MOB_EFFECTS.register("gods_food_i",
-            () -> new GodsFoodEffectI(MobEffectCategory.NEUTRAL, 8501017));
+            () -> new GodsFoodEffectI(MobEffectCategory.NEUTRAL, 8501011));
+    public static final RegistryObject<MobEffect> GODS_FOOD_II = MOB_EFFECTS.register("gods_food_ii",
+            () -> new GodsFoodEffectI(MobEffectCategory.NEUTRAL, 8501011));
+    public static final RegistryObject<MobEffect> GODS_FOOD_III = MOB_EFFECTS.register("gods_food_iii",
+            () -> new GodsFoodEffectI(MobEffectCategory.NEUTRAL, 8501011));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

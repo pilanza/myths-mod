@@ -1,11 +1,15 @@
 package net.tsuk1.mythsmod.events;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -14,8 +18,10 @@ import net.tsuk1.mythsmod.MythsMod;
 import net.tsuk1.mythsmod.commands.GetGodParentCommand;
 import net.tsuk1.mythsmod.commands.RemoveGodParentCommand;
 import net.tsuk1.mythsmod.commands.SetGodParentCommand;
+import net.tsuk1.mythsmod.effect.ModEffects;
 import net.tsuk1.mythsmod.god_parent.PlayerGodParent;
 import net.tsuk1.mythsmod.god_parent.PlayerGodParentProvider;
+import net.tsuk1.mythsmod.item.ModItems;
 
 @Mod.EventBusSubscriber(modid = MythsMod.MOD_ID)
 public class ModEvents {
@@ -42,6 +48,33 @@ public class ModEvents {
             });
         });
         event.getOriginal().invalidateCaps();
+    }
+
+    @SubscribeEvent
+    public static void onFoodEaten(LivingEntityUseItemEvent.Finish event) {
+        if (event.getItem().getItem() == ModItems.GODS_AMBROSIA.get()) {
+            LivingEntity pLivingEntity = event.getEntity();
+            pLivingEntity.getCapability(PlayerGodParentProvider.PLAYER_GOD_PARENT).ifPresent(godParent -> {
+                String godName = godParent.getGod();
+                if (godName == "" || godName == null) {
+                    pLivingEntity.setSecondsOnFire(30);
+                } else {
+                    pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HEAL));
+                    if(pLivingEntity.hasEffect(ModEffects.GODS_FOOD_I.get())){
+                        pLivingEntity.removeEffect(ModEffects.GODS_FOOD_I.get());
+                        pLivingEntity.addEffect(new MobEffectInstance(ModEffects.GODS_FOOD_II.get(), 20*60));
+                    } else if (pLivingEntity.hasEffect(ModEffects.GODS_FOOD_II.get())) {
+                        pLivingEntity.removeEffect(ModEffects.GODS_FOOD_II.get());
+                        pLivingEntity.addEffect(new MobEffectInstance(ModEffects.GODS_FOOD_III.get(), 20*120));
+                    } else if (pLivingEntity.hasEffect(ModEffects.GODS_FOOD_III.get())) {
+                        pLivingEntity.addEffect(new MobEffectInstance(ModEffects.GODS_FOOD_III.get(), 20*120));
+                        pLivingEntity.setSecondsOnFire(30);
+                    }else {
+                        pLivingEntity.addEffect(new MobEffectInstance(ModEffects.GODS_FOOD_I.get(), 20*30));
+                    }
+                }
+            });
+        }
     }
 
     @SubscribeEvent

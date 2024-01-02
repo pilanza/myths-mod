@@ -5,8 +5,8 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import org.jetbrains.annotations.NotNull;
 
-public class GodsFoodEffectI extends MobEffect {
-    public GodsFoodEffectI(MobEffectCategory pCategory, int pColor) {
+public class GodsFoodEffectIII extends MobEffect {
+    public GodsFoodEffectIII(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
     }
 
