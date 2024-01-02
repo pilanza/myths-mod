@@ -17,7 +17,7 @@ public class PlayerGodParentProvider implements ICapabilityProvider, INBTSeriali
     private PlayerGodParent godParent = null;
     private final LazyOptional<PlayerGodParent> optional = LazyOptional.of(this::createPlayerGodParent);
 
-    private PlayerGodParent createPlayerGodParent() {
+    private <T> PlayerGodParent createPlayerGodParent() {
         if(this.godParent == null) {
             this.godParent = new PlayerGodParent();
         }
@@ -45,4 +45,6 @@ public class PlayerGodParentProvider implements ICapabilityProvider, INBTSeriali
     public void deserializeNBT(CompoundTag nbt) {
         createPlayerGodParent().loadNBTData(nbt);
     }
+
+
 }

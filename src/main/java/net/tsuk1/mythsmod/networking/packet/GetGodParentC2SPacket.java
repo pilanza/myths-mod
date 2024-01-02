@@ -29,7 +29,7 @@ public class GetGodParentC2SPacket {
 
             player.getCapability(PlayerGodParentProvider.PLAYER_GOD_PARENT).ifPresent(godParent -> {
                 String godName = godParent.getGod();
-                if(godName != "") {
+                if(godName != "" && godName != null) {
                     player.sendSystemMessage(Component.literal("Your Godly Parent is " + godName));
                 } else {
                     player.sendSystemMessage(Component.literal("Your Godly Parent didn't claimed you yet."));

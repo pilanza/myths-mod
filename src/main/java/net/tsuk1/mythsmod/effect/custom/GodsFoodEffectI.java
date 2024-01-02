@@ -27,16 +27,5 @@ public class GodsFoodEffectI extends InstantenousMobEffect {
         });
     }
 
-    @Override
-    public void applyInstantenousEffect(@Nullable Entity pSource, @Nullable Entity pIndirectSource, LivingEntity pLivingEntity, int pAmplifier, double pHealth) {
-        pLivingEntity.getCapability(PlayerGodParentProvider.PLAYER_GOD_PARENT).ifPresent(godParent -> {
-            String godName = godParent.getGod();
-            if(godName != "") {
-                int i = (int)(pHealth * (double)(4 << pAmplifier) + 0.5D);
-                pLivingEntity.heal((float)i);
-            } else {
-                pLivingEntity.displayFireAnimation();
-            }
-        });
-    }
+
 }
