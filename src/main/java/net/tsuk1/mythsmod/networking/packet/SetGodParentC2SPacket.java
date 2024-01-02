@@ -38,7 +38,11 @@ public class SetGodParentC2SPacket {
             player.getCapability(PlayerGodParentProvider.PLAYER_GOD_PARENT).ifPresent(godParent -> {
                 godParent.setGodParent(parentName);
             });
-            player.sendSystemMessage(Component.literal(parentName+" has claimed you as their child"));
+            if (parentName != "") {
+                player.sendSystemMessage(Component.literal(parentName+" has claimed you as their child"));
+            } else {
+                player.sendSystemMessage(Component.literal("You are an unclaimed now."));
+            }
         });
     }
 }

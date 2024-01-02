@@ -7,7 +7,12 @@
   "item.mythsmod.riptide_pen_form": "Riptide (pen form)",
   "item.mythsmod.riptide_sword_form": "Riptide (sword form)",
 
+  "item.mythsmod.gods_ambrosia": "God's Ambrosia",
+
+  "effect.mythsmod.gods_food_i": "God's Food I",
+
   "creativetab.mythological_natural_tab": "Mythological Natural Tab",
   "creativetab.mythological_ingredients_tab": "Mythological Ingredients Tab",
-  "creativetab.mythological_weapons_tab": "Mythological Weapons Tab"
+  "creativetab.mythological_armory_tab": "Mythological Armory Tab",
+  "creativetab.mythological_food_tab": "Mythological Food Tab"
 }

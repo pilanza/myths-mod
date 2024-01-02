@@ -1,15 +1,15 @@
 package net.tsuk1.mythsmod.effect.custom;
 
-import net.minecraft.world.effect.InstantenousMobEffect;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.tsuk1.mythsmod.god_parent.PlayerGodParentProvider;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
+import java.util.Objects;
 
-public class GodsFoodEffectI extends InstantenousMobEffect {
+public class GodsFoodEffectI extends MobEffect {
     public GodsFoodEffectI(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
     }
@@ -19,13 +19,14 @@ public class GodsFoodEffectI extends InstantenousMobEffect {
         super.applyEffectTick(pLivingEntity, pAmplifier);
         pLivingEntity.getCapability(PlayerGodParentProvider.PLAYER_GOD_PARENT).ifPresent(godParent -> {
             String godName = godParent.getGod();
-            if(godName != "") {
-                pLivingEntity.heal((float)Math.max(4 << pAmplifier, 0));
-            } else {
-                pLivingEntity.displayFireAnimation();
+            if(Objects.equals(godName, "") || godName == null) {
+                pLivingEntity.setSecondsOnFire(30);
             }
         });
     }
 
-
+    @Override
+    public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+        return true;
+    }
 }

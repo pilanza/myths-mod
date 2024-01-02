@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.command.ConfigCommand;
 import net.tsuk1.mythsmod.MythsMod;
 import net.tsuk1.mythsmod.commands.GetGodParentCommand;
+import net.tsuk1.mythsmod.commands.RemoveGodParentCommand;
 import net.tsuk1.mythsmod.commands.SetGodParentCommand;
 import net.tsuk1.mythsmod.god_parent.PlayerGodParent;
 import net.tsuk1.mythsmod.god_parent.PlayerGodParentProvider;
@@ -47,6 +48,7 @@ public class ModEvents {
     public static void onCommandsRegister(RegisterCommandsEvent event) {
         new GetGodParentCommand(event.getDispatcher());
         new SetGodParentCommand(event.getDispatcher());
+        new RemoveGodParentCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
     }

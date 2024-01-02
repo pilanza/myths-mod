@@ -32,11 +32,19 @@ public class ModCreativeTabs {
                     .build());
 
 
-    public static final RegistryObject<CreativeModeTab> MYTHOLOGICAL_WEAPONS_TAB = CREATIVE_MODE_TABS.register("mythological_weapons_tab",
+    public static final RegistryObject<CreativeModeTab> MYTHOLOGICAL_ARMORY_TAB = CREATIVE_MODE_TABS.register("mythological_armory_tab",
             ()-> CreativeModeTab.builder().icon(()->new ItemStack(ModItems.RIPTIDE_SWORD_FORM.get()))
-                    .title(Component.translatable("creativetab.mythological_weapons_tab"))
+                    .title(Component.translatable("creativetab.mythological_armory_tab"))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModItems.RIPTIDE_SWORD_FORM.get());
+                        pOutput.accept(ModItems.RIPTIDE_PEN_FORM.get());
+                    })
+                    .build());
+
+    public static final RegistryObject<CreativeModeTab> MYTHOLOGICAL_FOOD_TAB = CREATIVE_MODE_TABS.register("mythological_food_tab",
+            ()-> CreativeModeTab.builder().icon(()->new ItemStack(ModItems.GODS_AMBROSIA.get()))
+                    .title(Component.translatable("creativetab.mythological_food_tab"))
+                    .displayItems((pParameters, pOutput) -> {
+                        pOutput.accept(ModItems.GODS_AMBROSIA.get());
                     })
                     .build());
 

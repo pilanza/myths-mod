@@ -27,7 +27,9 @@ public class ModItems {
     public static final RegistryObject<Item> RIPTIDE_SWORD_FORM = ITEMS.register("riptide_sword_form",
             () -> new RiptideSwordFormItem(Tiers.NETHERITE, 8, 5, new Item.Properties()));
 
-
+    /*Mythological Foods*/
+    public static final RegistryObject<Item> GODS_AMBROSIA = ITEMS.register("gods_ambrosia",
+            () -> new Item(new Item.Properties().food(ModFoods.GODS_AMBROSIA)));
 
 
     public static void register(IEventBus eventBus) {

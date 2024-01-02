@@ -28,6 +28,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         /*Mythological Weapons*/
         handheldItem(ModItems.RIPTIDE_PEN_FORM);
         handheldItem(ModItems.RIPTIDE_SWORD_FORM);
+
+        /*Mythological Food*/
+        simpleItem(ModItems.GODS_AMBROSIA);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

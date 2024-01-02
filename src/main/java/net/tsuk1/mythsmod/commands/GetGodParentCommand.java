@@ -11,7 +11,7 @@ import net.tsuk1.mythsmod.networking.packet.GetGodParentC2SPacket;
 
 public class GetGodParentCommand {
     public GetGodParentCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("get").then(Commands.literal("godParent").executes(this::getGodParent)));
+        dispatcher.register(Commands.literal("godParent").then(Commands.literal("get").executes(this::getGodParent)));
     }
 
     private int getGodParent(CommandContext<CommandSourceStack> command) throws CommandSyntaxException {
