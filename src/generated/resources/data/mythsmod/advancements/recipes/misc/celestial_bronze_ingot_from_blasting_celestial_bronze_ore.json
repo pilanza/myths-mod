@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_celestial_bronze_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "mythsmod:celestial_bronze_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mythsmod:celestial_bronze_ingot_from_blasting_celestial_bronze_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_celestial_bronze_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mythsmod:celestial_bronze_ingot_from_blasting_celestial_bronze_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

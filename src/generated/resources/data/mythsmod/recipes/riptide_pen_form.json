@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "mythsmod:celestial_bronze_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "pattern": [
+    "WCW",
+    " C ",
+    " S "
+  ],
+  "result": {
+    "item": "mythsmod:riptide_pen_form"
+  },
+  "show_notification": true
+}

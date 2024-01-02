@@ -1,0 +1,13 @@
+{
+  "block.mythsmod.celestial_bronze_ore": "Celestial Bronze Ore",
+
+  "item.mythsmod.raw_celestial_bronze": "Raw Celestial Bronze",
+  "item.mythsmod.celestial_bronze_ingot": "Celestial Bronze Ingot",
+
+  "item.mythsmod.riptide_pen_form": "Riptide (pen form)",
+  "item.mythsmod.riptide_sword_form": "Riptide (sword form)",
+
+  "creativetab.mythological_natural_tab": "Mythological Natural Tab",
+  "creativetab.mythological_ingredients_tab": "Mythological Ingredients Tab",
+  "creativetab.mythological_weapons_tab": "Mythological Weapons Tab"
+}
