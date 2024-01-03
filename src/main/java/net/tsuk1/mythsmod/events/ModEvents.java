@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,8 +24,12 @@ import net.tsuk1.mythsmod.god_parent.PlayerGodParent;
 import net.tsuk1.mythsmod.god_parent.PlayerGodParentProvider;
 import net.tsuk1.mythsmod.item.ModItems;
 
+import java.util.Objects;
+
 @Mod.EventBusSubscriber(modid = MythsMod.MOD_ID)
 public class ModEvents {
+    static int timeToHeal = 0;
+
     @SubscribeEvent
     public static void onRegisterCapabilities(RegisterCapabilitiesEvent event) {
         event.register(PlayerGodParent.class);
@@ -84,5 +89,24 @@ public class ModEvents {
         new RemoveGodParentCommand(event.getDispatcher());
 
         ConfigCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        Player player = event.player;
+        player.getCapability(PlayerGodParentProvider.PLAYER_GOD_PARENT).ifPresent(godParent -> {
+            String godName = godParent.getGod();
+            /*Poseidon Children Passive Powers*/
+            if (player.isInWater() && Objects.equals(godName, "Poseidon")){
+                timeToHeal += 1;
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST));
+                player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING));
+                player.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE));
+                if (timeToHeal >= 20*10) {
+                    player.heal(1f);
+                    timeToHeal = 0;
+                }
+            }
+        });
     }
 }
