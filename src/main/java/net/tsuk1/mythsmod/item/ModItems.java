@@ -30,7 +30,7 @@ public class ModItems {
 
     /*Mythological Items*/
     public static final RegistryObject<Item> YANKEE_CAP = ITEMS.register("yankee_cap",
-            ()-> new YankeeCapItem(new Item.Properties().stacksTo(1)));
+            ()-> new YankeeCapItem(ModArmorMaterials.CELESTIAL_BRONZE, ArmorItem.Type.HELMET, new Item.Properties()));
 
     /*Mythological Foods*/
     public static final RegistryObject<Item> GODS_AMBROSIA = ITEMS.register("gods_ambrosia",

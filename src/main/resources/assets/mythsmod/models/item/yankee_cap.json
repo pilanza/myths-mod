@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "loader": "forge:separate_transforms",
-  "base": {
-    "parent": "tutorialmod:item/yankee_cap_3d"
-  }
-}
